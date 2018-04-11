@@ -101,6 +101,15 @@
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\Logger\Base\LoggerBase.cs" />
+    <Compile Include="Utilities\Logger\LoggerHelper.cs" />
+    <Compile Include="Utilities\Status\LoggerStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BC\" />
+    <Folder Include="Utilities\Format\" />
+    <Folder Include="Utilities\Mappers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
