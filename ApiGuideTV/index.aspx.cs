@@ -31,13 +31,13 @@ namespace ApiGuideTV
                     {
                         Category = program[0],
                         Id = program[1],
-                        Id2 = program[2],
+                        IdChannel = program[2],
                         Type = program[3],
-                        Name = program[4],
+                        Title = program[4],
                         AnotherCategory = program[5],
                         Nose = program[6],
                         Nil = program[7],
-                        Poster = program[8],
+                        Image = program[8],
                         EpochStart = program[9],
                         EpochEnd = program[10]
                     };

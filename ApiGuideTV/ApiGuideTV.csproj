@@ -81,6 +81,15 @@
   <ItemGroup>
     <Content Include="error.aspx" />
     <Content Include="index.aspx" />
+<<<<<<< HEAD
+=======
+    <Content Include="now.aspx" />
+    <Content Include="Resources\css\materialize.css" />
+    <Content Include="Resources\css\materialize.min.css" />
+    <Content Include="Resources\css\style.css" />
+    <Content Include="Resources\js\materialize.js" />
+    <Content Include="Resources\js\materialize.min.js" />
+>>>>>>> parent of cae6d49... Channel get created
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -88,6 +97,19 @@
     <Compile Include="BE\ProgramResponse.cs" />
     <Compile Include="error.aspx.cs">
       <DependentUpon>error.aspx</DependentUpon>
+<<<<<<< HEAD
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+=======
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="error.aspx.designer.cs">
@@ -100,7 +122,24 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="now.aspx.cs">
+      <DependentUpon>now.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="now.aspx.designer.cs">
+      <DependentUpon>now.aspx</DependentUpon>
+>>>>>>> parent of cae6d49... Channel get created
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utilities\Constants.cs" />
+    <Compile Include="Utilities\Logger\Base\LoggerBase.cs" />
+    <Compile Include="Utilities\Logger\LoggerHelper.cs" />
+    <Compile Include="Utilities\Status\LoggerStatus.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BC\" />
+    <Folder Include="Utilities\Format\" />
+    <Folder Include="Utilities\Mappers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
