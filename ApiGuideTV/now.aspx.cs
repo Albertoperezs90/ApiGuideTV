@@ -6,7 +6,10 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ApiGuideTV.BE;
+using ApiGuideTV.Utilities.Format;
+using ApiGuideTV.Utilities.Logger;
 using ApiGuideTV.Utilities.Mappers;
+using ApiGuideTV.Utilities.Status;
 using Newtonsoft.Json;
 
 namespace ApiGuideTV
@@ -15,11 +18,16 @@ namespace ApiGuideTV
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetDataItem();
+            LoadNowGuideTV();
         }
 
-        private new void GetDataItem()
-        {
+
+        private void LoadNowGuideTV()
+        { 
+            #region Log method input
+            LoggerHelper.LogEntryParams(LoggerLevel.File, "LoadNowGuideTV", null);
+            #endregion
+
             using (WebClient response = new WebClient())
             {
                 try
@@ -29,12 +37,17 @@ namespace ApiGuideTV
 
                     var programsResponse = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
                     string json = JsonConvert.SerializeObject(programsResponse);
-                    Context.Response.ContentType = "application/json";
+                    Context.Response.ContentType = HTMLHeaders.ContentTypeJson();
                     Context.Response.Write(json);
 
-                } catch (WebException e)
+                    #region Log method output
+                    LoggerHelper.LogOuterParams(LoggerLevel.File, "GetDataItem", null);
+                    #endregion
+
+                }
+                catch (WebException e)
                 {
-                    System.Diagnostics.Debug.WriteLine(e.Message);
+                    LoggerHelper.LogExceptionParams(LoggerLevel.File, "LoadNowGuideTV", e);
                 }
             }
         }

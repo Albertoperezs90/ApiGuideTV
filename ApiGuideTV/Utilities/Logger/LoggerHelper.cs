@@ -1,25 +1,59 @@
 ﻿using ApiGuideTV.Utilities.Logger.Base;
+using ApiGuideTV.Utilities.Status;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text;
 using System.Web;
 
 namespace ApiGuideTV.Utilities.Logger
 {
     public class LoggerHelper
     {
-        private static LoggerHelper instance;
+        private static string rootPath = @Path.GetDirectoryName(Directory.GetCurrentDirectory());
+        private const string logName = "ApiGuiaTV.txt";
+        private static LoggerHelper logger;
+        //private LoggerLevel loggerLevel;
+        private const string loggerNCompany = "00000";
+        private const string applicationId = "ApiGuideTV";
 
-        public static LoggerHelper Instance
+        static LoggerHelper()
         {
-            get
+            logger = new LoggerHelper();
+
+            if (!GenericHelper.LoggerExist())
             {
-                if (instance == null)
-                {
-                    instance = new LoggerHelper();
-                }
-                return instance;
+                GenericHelper.CreateLoggerFile();
+            }
+        }
+
+        public static void LogEntryParams(Enum loggerLevel, string methodName, string[] param)
+        {
+
+        }
+
+        public static void LogExceptionParams(LoggerLevel loggerLevel, string methodName, Exception e)
+        {
+
+        }
+
+        /// <summary>
+        /// Save method name and params of method based on type passed
+        /// </summary>
+        /// <param name="loggerLevel">Type of log to be used</param>
+        /// <param name="methodName">Name of method who fire this</param>
+        /// <param name="param">Params of method</param>
+        public static void LogOuterParams(LoggerLevel loggerLevel, string methodName, string[] param)
+        {
+            switch (loggerLevel)
+            {
+                case LoggerLevel.File:
+                    new EventLogger().Log(param.ToString());
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -27,10 +61,13 @@ namespace ApiGuideTV.Utilities.Logger
         {
             public override void Log(string message)
             {
-                using (StreamWriter sw = new StreamWriter(Constants.filePath))
+                if (message != null)
                 {
-                    sw.WriteLine(message);
-                    sw.Close();
+                    using (StreamWriter w = GetLoggerWriter())
+                    {
+                        w.WriteLine(message);
+                        w.Close();
+                    }
                 }
             }
         }
@@ -41,6 +78,21 @@ namespace ApiGuideTV.Utilities.Logger
             {
                 throw new NotImplementedException();
             }
+        }
+
+        /// <summary>
+        /// Get writer required by logger
+        /// </summary>
+        /// <returns>Writer which log need to use</returns>
+        public static StreamWriter GetLoggerWriter()
+        {
+            StringBuilder sb = new StringBuilder();
+            sb.Append(Constants.logPath)
+                .Append(Constants.FileLogSeparator)
+                .Append(GenericHelper.GetCurrentDate())
+                .Append(Constants.logExtension);
+
+            return new StreamWriter(sb.ToString(), true);
         }
     }
 
