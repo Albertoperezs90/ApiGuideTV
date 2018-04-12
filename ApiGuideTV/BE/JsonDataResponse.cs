@@ -6,24 +6,12 @@ using System.Web;
 
 namespace ApiGuideTV.BE
 {
+    /// <summary>
+    /// Class to deserialize now.json response
+    /// </summary>
     public class JsonDataResponse
     {
-        public List<List<string>> data { get; set; }
+        public List<List<string>> Data { get; set; }
 
-        public partial class Quote
-        {
-            public static Quote FromJson(string json) =>
-                JsonConvert.DeserializeObject<Quote>(json, Converter.Settings);
-        }
-    
-
-        public class Converter
-        {
-            public static readonly JsonSerializerSettings Settings = new JsonSerializerSettings
-            {
-                MetadataPropertyHandling = MetadataPropertyHandling.Ignore,
-                DateParseHandling = DateParseHandling.None,
-            };
-        }
     }
 }

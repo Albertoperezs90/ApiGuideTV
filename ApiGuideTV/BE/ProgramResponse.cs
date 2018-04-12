@@ -5,6 +5,9 @@ using System.Web;
 
 namespace ApiGuideTV.BE
 {
+    /// <summary>
+    /// Class to deserialize data from each program
+    /// </summary>
     public class ProgramResponse
     {
         public string GenericType { get; set; }
