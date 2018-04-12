@@ -1,4 +1,6 @@
 ﻿using ApiGuideTV.BE;
+using ApiGuideTV.Utilities.Mappers;
+using AutoMapper;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,35 +16,7 @@ namespace ApiGuideTV
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            GetDataItem();
-        }
-
-        private void GetDataItem()
-        {
-            using (WebClient response = new WebClient())
-            {
-                var json = response.DownloadString("https://api.miguia.tv/1/es_ES/channel/now.json");
-
-                JsonDataResponse jsonResponse = JsonConvert.DeserializeObject<JsonDataResponse>(json);
-
-                foreach (List<string> program in jsonResponse.data)
-                {
-                    ProgramResponse programResponse = new ProgramResponse()
-                    {
-                        Category = program[0],
-                        Id = program[1],
-                        IdChannel = program[2],
-                        Type = program[3],
-                        Title = program[4],
-                        AnotherCategory = program[5],
-                        Nose = program[6],
-                        Nil = program[7],
-                        Image = program[8],
-                        EpochStart = program[9],
-                        EpochEnd = program[10]
-                    };
-                }
-            }
+           
         }
     }
 }
