@@ -124,7 +124,7 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Constants.cs" />
-    <Compile Include="Utilities\Mappers\EntityConverters.cs" />
+    <Compile Include="Utilities\Mappers\EntityMapper.cs" />
     <Compile Include="Utilities\Status\HTMLHeaders.cs" />
     <Compile Include="Utilities\Helpers\ReflectionHelper.cs" />
     <Compile Include="Utilities\Helpers\GenericHelper.cs" />

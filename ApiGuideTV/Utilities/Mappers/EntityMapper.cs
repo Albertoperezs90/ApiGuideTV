@@ -6,7 +6,7 @@ using ApiGuideTV.BE;
 
 namespace ApiGuideTV.Utilities.Mappers
 {
-    public static class EntityConverters
+    public static class EntityMapper
     {
         public static Program ConvertProgramResponseToProgram(ProgramResponse response)
         {
