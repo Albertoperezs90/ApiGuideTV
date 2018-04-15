@@ -24,9 +24,9 @@ namespace ApiGuideTV
 
         private void LoadNowGuideTV()
         { 
-            #region Log method input
-            LoggerHelper.LogEntryParams(LoggerLevel.File, "LoadNowGuideTV", null);
-            #endregion
+            //#region Log method input
+            //LoggerHelper.LogEntryParams(LoggerLevel.File, "LoadNowGuideTV", null);
+            //#endregion
 
             using (WebClient response = new WebClient())
             {
