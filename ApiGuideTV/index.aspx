@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="ApiGuideTV.index" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Index.aspx.cs" Inherits="ApiGuideTV.index" %>
 
 <!DOCTYPE html>
 
@@ -17,33 +17,40 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div class="container">
-            <asp:Table ID="myTable" runat="server" CssClass="striped">
-                <asp:TableHeaderRow>
-                    <asp:TableHeaderCell>
-                        <asp:Label runat="server">Method</asp:Label>
-                    </asp:TableHeaderCell>
-                    <asp:TableHeaderCell>
-                        <asp:Label runat="server">Description</asp:Label>
-                    </asp:TableHeaderCell>
-                    <asp:TableHeaderCell>
-                        <asp:Label runat="server">Path</asp:Label>
-                    </asp:TableHeaderCell>
-                </asp:TableHeaderRow>
-                <asp:TableRow>
-                    <asp:TableCell>
-                        <asp:Label runat="server">GET</asp:Label>
-                    </asp:TableCell>
-                    <asp:TableCell>
-                        <asp:Label runat="server">Get all programs/movies/series starting now</asp:Label>
-                    </asp:TableCell>
-                    <asp:TableCell>
-                        <asp:Label runat="server"><a href="now.aspx">/now</a></asp:Label>
-                    </asp:TableCell>
-                </asp:TableRow>
-            </asp:Table>
-        </div>
-    </form>
+    <div class="container">
+        <asp:Table ID="myTable" runat="server" CssClass="striped">
+            <asp:TableHeaderRow>
+                <asp:TableHeaderCell>
+                    <asp:Label runat="server">Method</asp:Label>
+                </asp:TableHeaderCell>
+                <asp:TableHeaderCell>
+                    <asp:Label runat="server">Description</asp:Label>
+                </asp:TableHeaderCell>
+                <asp:TableHeaderCell>
+                    <asp:Label runat="server">Path</asp:Label>
+                </asp:TableHeaderCell>
+            </asp:TableHeaderRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server">GET</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server">Get next 5 programs/movies/series starting now</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server"><a href="now.aspx">/Now</a></asp:Label>
+                </asp:TableCell>
+            </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server">GET</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server">Get all guide from a channel for four days</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell runat="server"><a href="channel.aspx">/Channel?id={idChannel}</a></asp:TableCell>
+            </asp:TableRow>
+        </asp:Table>
+    </div>
 </body>
 </html>

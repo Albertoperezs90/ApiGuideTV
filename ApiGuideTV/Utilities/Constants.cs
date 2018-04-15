@@ -32,5 +32,10 @@ namespace ApiGuideTV.Utilities
         /// Logger header text, start every day
         /// </summary>
         public const string LoggerHeader = "********";
+
+        /// <summary>
+        /// Json endpoint
+        /// </summary>
+        public const string JsonEndPoint = ".json";
     }
 }
