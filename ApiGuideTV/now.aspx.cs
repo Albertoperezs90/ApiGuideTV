@@ -48,6 +48,7 @@ namespace ApiGuideTV
                 catch (WebException e)
                 {
                     LoggerHelper.LogExceptionParams(LoggerLevel.File, "LoadNowGuideTV", e);
+
                 }
             }
         }
