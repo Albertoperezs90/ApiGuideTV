@@ -14,7 +14,7 @@ namespace ApiGuideTV.Utilities.Mappers
             {
                 GenericType = response.GenericType,
                 Id = response.Id,
-                Channel = new Channel()
+                Channel = new BE.Channel()
                 {
                     Id = response.IdChannel
                 },

@@ -47,14 +47,18 @@ namespace ApiGuideTV.Utilities.Logger
         /// <param name="param">Params of method</param>
         public static void LogOuterParams(LoggerLevel loggerLevel, string methodName, string[] param)
         {
-            switch (loggerLevel)
+            if (param != null)
             {
-                case LoggerLevel.File:
-                    new EventLogger().Log(param.ToString());
-                    break;
-                default:
-                    break;
+                switch (loggerLevel)
+                {
+                    case LoggerLevel.File:
+                        new EventLogger().Log(param.ToString());
+                        break;
+                    default:
+                        break;
+                }
             }
+            
         }
 
         private class EventLogger : LoggerBase
