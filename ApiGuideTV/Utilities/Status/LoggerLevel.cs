@@ -7,13 +7,13 @@ namespace ApiGuideTV.Utilities.Status
 {
     /// <summary>
     /// <para>Succesful -> 0</para>
-    /// <para>Database -> 1</para>
-    /// <para>File -> 2</para>
+    /// <para>Exception -> 1</para>
+    /// <para>Trace -> 2</para>
     /// </summary>
     public enum LoggerLevel
     {
-        Unknown = 0,
-        Database = 1,
-        File = 2
+        Succesful = 0,
+        Exception = 1,
+        Trace = 2
     }
 }

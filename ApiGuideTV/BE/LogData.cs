@@ -5,10 +5,11 @@ using System.Web;
 
 namespace ApiGuideTV.BE
 {
-    public class ChannelResponse
+    public class LogData
     {
         public string Id { get; set; }
-        public string Name { get; set; }
-        public string Image { get; set; }
+        public string Type { get; set; }
+        public string MethodName { get; set; }
+        public string Param { get; set; }
     }
 }
