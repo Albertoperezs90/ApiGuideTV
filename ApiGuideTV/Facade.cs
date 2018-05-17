@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ApiGuideTV.BC;
 using ApiGuideTV.BE;
+using ApiGuideTV.BE.DAO;
 using ApiGuideTV.Utilities.Format;
 
 namespace ApiGuideTV
@@ -28,7 +29,7 @@ namespace ApiGuideTV
 
         public string LoadNowGuideTV()
         {
-            List<ProgramResponse> programs = ProgramBC.Instance.LoadNowGuideTV();
+           ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV();
             return ReflectionHelper.GetJsonFromObject(programs);
         }
     }

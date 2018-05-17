@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using ApiGuideTV.BE;
+using ApiGuideTV.BE.DAO;
 
 namespace ApiGuideTV.Utilities.Mappers
 {
     public static class JsonMapper
     {
-        public static List<ProgramResponse> MapJsonDataResponseToProgramResponse(JsonDataResponse apiResponse)
+        public static ProgramsResponse MapJsonDataResponseToProgramResponse(JsonDataResponse apiResponse)
         {
-            List<ProgramResponse> response = new List<ProgramResponse>();
+            ProgramsResponse programs = new ProgramsResponse();
+            programs.response = new List<ProgramResponse>();
             foreach (List<string> programValues in apiResponse.Data)
             {
                 ProgramResponse programResponse = new ProgramResponse()
@@ -27,10 +29,10 @@ namespace ApiGuideTV.Utilities.Mappers
                     EpochStart = programValues[9],
                     EpochEnd = programValues[10]
                 };
-                response.Add(programResponse);
+                programs.response.Add(programResponse);
             }
 
-            return response;
+            return programs;
         }
     }
 }

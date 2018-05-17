@@ -110,6 +110,7 @@
     <Compile Include="BE\DAO\ChannelRequest.cs" />
     <Compile Include="BE\DAO\ChannelResponse.cs" />
     <Compile Include="BE\DAO\JsonDataResponse.cs" />
+    <Compile Include="BE\DAO\ProgramsResponse.cs" />
     <Compile Include="BE\LogData.cs" />
     <Compile Include="BE\Program.cs" />
     <Compile Include="BE\DAO\ProgramRequest.cs" />
@@ -171,7 +172,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51718</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using ApiGuideTV.BE;
+using ApiGuideTV.BE.DAO;
 using ApiGuideTV.Utilities.Format;
 using ApiGuideTV.Utilities.Logger;
 using ApiGuideTV.Utilities.Mappers;
@@ -31,9 +32,9 @@ namespace ApiGuideTV.BC
             }
         }
 
-        public List<ProgramResponse> LoadNowGuideTV()
+        public ProgramsResponse LoadNowGuideTV()
         {
-            List<ProgramResponse> programs = new List<ProgramResponse>();
+            ProgramsResponse programs = new ProgramsResponse();
 
             try
             {
