@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -8,22 +9,19 @@ namespace ApiGuideTV.Utilities
     public class Constants
     {
         /// <summary>
-        /// logger name
+        /// Logger name
         /// </summary>
-        public const string LoggerIdString = "ApiGuideTV";
+        public const string LoggerIdString = "TeletextoDigital.API";
 
         ///<summary>
-        /// logger path
+        /// Logger path
         /// </summary>
-<<<<<<< HEAD
-        public const string filePath = @"C:\ApiGuideTV.txt";
-=======
-        public const string logPath = @"C:/log/ApiGuideTV";
+        public static readonly string logPath = System.Configuration.ConfigurationManager.ConnectionStrings["logDrive"].ToString();
 
         /// <summary>
-        /// Log Extension
+        /// Number of company
         /// </summary>
-        public const string logExtension = ".log";
+        private const string loggerNCompany = "00000";
 
         /// <summary>
         /// Logger Separator
@@ -34,6 +32,10 @@ namespace ApiGuideTV.Utilities
         /// Logger header text, start every day
         /// </summary>
         public const string LoggerHeader = "********";
->>>>>>> parent of cae6d49... Channel get created
+
+        /// <summary>
+        /// Json endpoint
+        /// </summary>
+        public const string JsonEndPoint = ".json";
     }
 }
