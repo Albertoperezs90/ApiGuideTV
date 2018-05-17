@@ -46,13 +46,13 @@ namespace ApiGuideTV
                     Context.Response.Write(json);
 
                     #region Log method output
-                    LoggerHelper.LogOuterParams(LoggerLevel.File, "LoadChannelData", null);
+                    
                     #endregion
 
                 }
                 catch (WebException e)
                 {
-                    LoggerHelper.LogExceptionParams(LoggerLevel.File, "LoadChannelData", e);
+                    
                 }
             }
         }

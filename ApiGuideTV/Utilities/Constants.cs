@@ -11,17 +11,17 @@ namespace ApiGuideTV.Utilities
         /// <summary>
         /// Logger name
         /// </summary>
-        public const string LoggerIdString = "ApiGuideTV";
+        public const string LoggerIdString = "TeletextoDigital.API";
 
         ///<summary>
         /// Logger path
         /// </summary>
-        public const string logPath = @"C:/log/ApiGuideTV";
+        public static readonly string logPath = System.Configuration.ConfigurationManager.ConnectionStrings["logDrive"].ToString();
 
         /// <summary>
-        /// Log Extension
+        /// Number of company
         /// </summary>
-        public const string logExtension = ".log";
+        private const string loggerNCompany = "00000";
 
         /// <summary>
         /// Logger Separator

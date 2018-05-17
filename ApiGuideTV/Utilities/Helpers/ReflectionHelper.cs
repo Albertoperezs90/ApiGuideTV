@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Web;
+using Newtonsoft.Json;
 
 namespace ApiGuideTV.Utilities.Format
 {
@@ -45,6 +46,12 @@ namespace ApiGuideTV.Utilities.Format
             }
 
             return sb.ToString();
+        }
+
+
+        public static string GetJsonFromObject(Object o)
+        {
+            return JsonConvert.SerializeObject(o);
         }
     }
 }

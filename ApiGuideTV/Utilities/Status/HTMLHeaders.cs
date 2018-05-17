@@ -22,5 +22,10 @@ namespace ApiGuideTV.Utilities.Format
         {
             return "application/json";
         }
+
+        public static string MethodPost()
+        {
+            return "POST";
+        }
     }
 }

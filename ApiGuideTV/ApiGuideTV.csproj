@@ -44,9 +44,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=6.2.2.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
-      <HintPath>..\packages\AutoMapper.6.2.2\lib\net45\AutoMapper.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.8.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
@@ -54,7 +51,6 @@
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -83,70 +79,71 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Channel.aspx" />
-    <Content Include="Error.aspx" />
-    <Content Include="Index.aspx" />
-    <Content Include="Now.aspx" />
+    <Content Include="error.aspx" />
+    <Content Include="index.aspx" />
+<<<<<<< HEAD
+=======
+    <Content Include="now.aspx" />
     <Content Include="Resources\css\materialize.css" />
     <Content Include="Resources\css\materialize.min.css" />
     <Content Include="Resources\css\style.css" />
     <Content Include="Resources\js\materialize.js" />
     <Content Include="Resources\js\materialize.min.js" />
+>>>>>>> parent of cae6d49... Channel get created
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BE\Channel.cs" />
-    <Compile Include="BE\ChannelRequest.cs" />
-    <Compile Include="BE\ChannelResponse.cs" />
     <Compile Include="BE\JsonDataResponse.cs" />
-    <Compile Include="BE\Program.cs" />
-    <Compile Include="BE\ProgramRequest.cs" />
     <Compile Include="BE\ProgramResponse.cs" />
-    <Compile Include="Channel.aspx.cs">
-      <DependentUpon>Channel.aspx</DependentUpon>
+    <Compile Include="error.aspx.cs">
+      <DependentUpon>error.aspx</DependentUpon>
+<<<<<<< HEAD
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Channel.aspx.designer.cs">
-      <DependentUpon>Channel.aspx</DependentUpon>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Error.aspx.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Error.aspx.designer.cs">
-      <DependentUpon>Error.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+=======
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="error.aspx.designer.cs">
+      <DependentUpon>error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Now.aspx.cs">
-      <DependentUpon>Now.aspx</DependentUpon>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Now.aspx.designer.cs">
-      <DependentUpon>Now.aspx</DependentUpon>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="now.aspx.cs">
+      <DependentUpon>now.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="now.aspx.designer.cs">
+      <DependentUpon>now.aspx</DependentUpon>
+>>>>>>> parent of cae6d49... Channel get created
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utilities\Constants.cs" />
-    <Compile Include="Utilities\Helpers\JsonHelper.cs" />
-    <Compile Include="Utilities\Mappers\EntityMapper.cs" />
+    <Compile Include="Utilities\Mappers\EntityConverters.cs" />
     <Compile Include="Utilities\Status\HTMLHeaders.cs" />
     <Compile Include="Utilities\Helpers\ReflectionHelper.cs" />
     <Compile Include="Utilities\Helpers\GenericHelper.cs" />
     <Compile Include="Utilities\Logger\Base\LoggerBase.cs" />
     <Compile Include="Utilities\Logger\LoggerHelper.cs" />
-    <Compile Include="Utilities\Mappers\JsonMapper.cs" />
-    <Compile Include="Utilities\Status\Base\LoggerLevelBase.cs" />
-    <Compile Include="Utilities\Status\LoggerLevel.cs" />
+    <Compile Include="Utilities\Status\LoggerStatus.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BC\" />
-    <Folder Include="Resources\fonts\" />
     <Folder Include="Utilities\Format\" />
+    <Folder Include="Utilities\Mappers\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

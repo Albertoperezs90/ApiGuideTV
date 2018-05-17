@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using ApiGuideTV.BE.Base;
 
 namespace ApiGuideTV.BE
 {
     /// <summary>
     /// Class to deserialize data from each program
     /// </summary>
-    public class ProgramResponse
+    public class ProgramResponse : BaseResponse
     {
         public string GenericType { get; set; }
         public string Id { get; set; }
