@@ -30,7 +30,7 @@ namespace ApiGuideTV
         public string LoadNowGuideTV()
         {
            ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV();
-            return ReflectionHelper.GetJsonFromObject(programs);
+           return ReflectionHelper.GetJsonFromObject(programs);
         }
     }
 }
