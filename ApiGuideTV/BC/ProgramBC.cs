@@ -6,6 +6,7 @@ using System.Web;
 using ApiGuideTV.BE;
 using ApiGuideTV.BE.DAO;
 using ApiGuideTV.Utilities.Format;
+using ApiGuideTV.Utilities.Helpers;
 using ApiGuideTV.Utilities.Logger;
 using ApiGuideTV.Utilities.Mappers;
 using ApiGuideTV.Utilities.Status;
@@ -32,7 +33,7 @@ namespace ApiGuideTV.BC
             }
         }
 
-        public ProgramsResponse LoadNowGuideTV()
+        public ProgramsResponse LoadNowGuideTV(string[] sortBy, string channel)
         {
             ProgramsResponse programs = new ProgramsResponse();
 
@@ -45,6 +46,11 @@ namespace ApiGuideTV.BC
                     string jsonResponse = wc.DownloadString(uri);
                     JsonDataResponse jsonObject = JsonConvert.DeserializeObject<JsonDataResponse>(jsonResponse);
                     programs = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
+                }
+
+                if (!String.IsNullOrEmpty(channel))
+                {
+                    programs.response = programs.response.Where(p => p.IdChannel == channel).ToList();
                 }
 
                 LoggerHelper.LogOuterParams(LoggerLevel.Trace, "LoadNowGuideTV", ReflectionHelper.GetPropertiesToBeLogged(programs) );

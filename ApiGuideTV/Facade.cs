@@ -27,9 +27,9 @@ namespace ApiGuideTV
             }
         }
 
-        public string LoadNowGuideTV()
+        public string LoadNowGuideTV(string[] sortBy, string channel)
         {
-           ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV();
+           ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV(sortBy, channel);
            return ReflectionHelper.GetJsonFromObject(programs);
         }
     }
