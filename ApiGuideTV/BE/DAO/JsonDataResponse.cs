@@ -13,6 +13,6 @@ namespace ApiGuideTV.BE
     public class JsonDataResponse : BaseResponse
     {
         public List<List<string>> Data { get; set; }
-
+        
     }
 }

@@ -50,6 +50,15 @@
                 </asp:TableCell>
                 <asp:TableCell runat="server"><a href="channel.aspx">/Channel?id={idChannel}</a></asp:TableCell>
             </asp:TableRow>
+            <asp:TableRow>
+                <asp:TableCell>
+                    <asp:Label runat="server">GET</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell>
+                    <asp:Label runat="server">Get primetime starting from epoch</asp:Label>
+                </asp:TableCell>
+                <asp:TableCell runat="server"><a href="primetime.aspx">/Primetime?epoch={epoch}</a></asp:TableCell>
+            </asp:TableRow>
         </asp:Table>
     </div>
 </body>

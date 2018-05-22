@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using ApiGuideTV.BE;
 using ApiGuideTV.BE.DAO;
+using Newtonsoft.Json;
 
 namespace ApiGuideTV.Utilities.Mappers
 {
@@ -33,6 +34,12 @@ namespace ApiGuideTV.Utilities.Mappers
             }
 
             return programs;
+        }
+
+
+        public static string MapErrorToJson(BE.Status error)
+        {
+            return JsonConvert.SerializeObject(error);
         }
     }
 }
