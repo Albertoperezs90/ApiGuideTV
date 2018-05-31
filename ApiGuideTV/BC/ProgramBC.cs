@@ -5,6 +5,7 @@ using System.Net;
 using System.Web;
 using ApiGuideTV.BE;
 using ApiGuideTV.BE.DAO;
+using ApiGuideTV.Utilities;
 using ApiGuideTV.Utilities.Format;
 using ApiGuideTV.Utilities.Helpers;
 using ApiGuideTV.Utilities.Logger;
@@ -115,7 +116,7 @@ namespace ApiGuideTV.BC
             try
             {
                 string uri = System.Configuration.ConfigurationManager.ConnectionStrings["channelId"].ToString();
-                uri += "?" + idChannel;
+                uri += idChannel + Constants.JsonEndPoint;
 
                 using (WebClient wc = new WebClient())
                 {
