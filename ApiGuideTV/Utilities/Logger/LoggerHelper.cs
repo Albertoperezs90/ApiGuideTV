@@ -14,21 +14,23 @@ namespace ApiGuideTV.Utilities.Logger
 {
     public class LoggerHelper : LoggerBase
     {
-        private static LoggerHelper logger;
+        private static LoggerHelper instance;
 
+        private LoggerHelper() { }
 
-        static LoggerHelper()
+        static LoggerHelper Instance
         {
-            logger = new LoggerHelper();
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new LoggerHelper();
+                }
+                return instance;
+            }
         }
 
-
-        /// <summary>
-        /// Save method name and params of method based on type passed
-        /// </summary>
-        /// <param name="methodName">Name of method who fire this</param>
-        /// <param name="param">Params of method</param>
-        public static void LogEntryParams(LoggerLevel level, string methodName, string param)
+        private class EventLogger : LoggerBase
         {
 
         }

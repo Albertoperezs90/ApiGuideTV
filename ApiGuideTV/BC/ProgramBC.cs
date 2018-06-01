@@ -5,7 +5,9 @@ using System.Net;
 using System.Web;
 using ApiGuideTV.BE;
 using ApiGuideTV.BE.DAO;
+using ApiGuideTV.Utilities;
 using ApiGuideTV.Utilities.Format;
+using ApiGuideTV.Utilities.Helpers;
 using ApiGuideTV.Utilities.Logger;
 using ApiGuideTV.Utilities.Mappers;
 using ApiGuideTV.Utilities.Status;
@@ -32,9 +34,11 @@ namespace ApiGuideTV.BC
             }
         }
 
-        public ProgramsResponse LoadNowGuideTV()
+        public ProgramsResponse LoadNowGuideTV(string[] sortBy, string channel)
         {
             ProgramsResponse programs = new ProgramsResponse();
+
+            programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Unknown);
 
             try
             {
@@ -47,14 +51,91 @@ namespace ApiGuideTV.BC
                     programs = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
                 }
 
+                if (!String.IsNullOrEmpty(channel))
+                {
+                    programs.response = programs.response.OrderBy(p => p.IdChannel == channel).ToList();
+                }
+
+                if (StringHelper.IsNotNullOrEmpty(sortBy))
+                {
+
+                }
+
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Successful);
+
                 LoggerHelper.LogOuterParams(LoggerLevel.Trace, "LoadNowGuideTV", ReflectionHelper.GetPropertiesToBeLogged(programs) );
 
             } catch (Exception ex)
             {
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Timeout);
                 LoggerHelper.LogExceptionParams(LoggerLevel.Exception, "LoadNowGuideTV", ex);
             }
 
             return programs;
-        } 
+        }
+        
+
+        public ProgramsResponse LoadPrimetime (string epoch)
+        {
+            ProgramsResponse programs = new ProgramsResponse();
+
+            programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Unknown);
+
+            try
+            {
+                string uri = System.Configuration.ConfigurationManager.ConnectionStrings["primetime"].ToString();
+                uri += "?" + epoch;
+
+                using (WebClient wc = new WebClient())
+                {
+                    string jsonResponse = wc.DownloadString(uri);
+                    JsonDataResponse jsonObject = JsonConvert.DeserializeObject<JsonDataResponse>(jsonResponse);
+                    programs = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
+                }
+
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Successful);
+
+                LoggerHelper.LogOuterParams(LoggerLevel.Trace, "LoadPrimetime", ReflectionHelper.GetPropertiesToBeLogged(programs));
+
+            } catch (Exception ex)
+            {
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Timeout);
+                LoggerHelper.LogExceptionParams(LoggerLevel.Exception, "LoadPrimetime", ex);
+            }
+
+            return programs;
+        }
+
+
+        public ProgramsResponse LoadChannelGuide(string idChannel)
+        {
+            ProgramsResponse programs = new ProgramsResponse();
+
+            programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Unknown);
+
+            try
+            {
+                string uri = System.Configuration.ConfigurationManager.ConnectionStrings["channelId"].ToString();
+                uri += idChannel + Constants.JsonEndPoint;
+
+                using (WebClient wc = new WebClient())
+                {
+                    string jsonResponse = wc.DownloadString(uri);
+                    JsonDataResponse jsonObject = JsonConvert.DeserializeObject<JsonDataResponse>(jsonResponse);
+                    programs = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
+                }
+
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Successful);
+
+                LoggerHelper.LogOuterParams(LoggerLevel.Trace, "LoadChannelGuide", ReflectionHelper.GetPropertiesToBeLogged(programs));
+            }
+            catch (Exception ex)
+            {
+                programs.CodeStatus = StatusHelper.GenerateStatus(CodeStatus.Timeout);
+                LoggerHelper.LogExceptionParams(LoggerLevel.Exception, "LoadChannelGuide", ex);
+            }
+
+            return programs;
+        }
     }
 }

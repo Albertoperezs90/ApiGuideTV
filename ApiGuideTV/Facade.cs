@@ -27,10 +27,23 @@ namespace ApiGuideTV
             }
         }
 
-        public string LoadNowGuideTV()
+        public string LoadNowGuideTV(string[] sortBy, string channel)
         {
-           ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV();
+           ProgramsResponse programs = ProgramBC.Instance.LoadNowGuideTV(sortBy, channel);
            return ReflectionHelper.GetJsonFromObject(programs);
+        }
+
+
+        public string LoadPrimetime(string epoch)
+        {
+            ProgramsResponse programs = ProgramBC.Instance.LoadPrimetime(epoch);
+            return ReflectionHelper.GetJsonFromObject(programs);
+        }
+
+        public string LoadChannelGuide(string idChannel)
+        {
+            ProgramsResponse programs = ProgramBC.Instance.LoadChannelGuide(idChannel);
+            return ReflectionHelper.GetJsonFromObject(programs);
         }
     }
 }

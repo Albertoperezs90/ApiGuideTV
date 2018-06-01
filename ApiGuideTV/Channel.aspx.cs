@@ -1,6 +1,7 @@
 ﻿using ApiGuideTV.BE;
 using ApiGuideTV.Utilities;
 using ApiGuideTV.Utilities.Format;
+using ApiGuideTV.Utilities.Helpers;
 using ApiGuideTV.Utilities.Logger;
 using ApiGuideTV.Utilities.Mappers;
 using ApiGuideTV.Utilities.Status;
@@ -21,7 +22,7 @@ namespace ApiGuideTV
         protected void Page_Load(object sender, EventArgs e)
         {
             string idChannel = Request.QueryString["id"];
-            if (idChannel != null)
+            if (StringHelper.IsChannelIdValid(idChannel))
             {
                 LoadChannelData(idChannel);
             }
@@ -29,32 +30,9 @@ namespace ApiGuideTV
 
         private void LoadChannelData(string idChannel)
         {
-            using (WebClient response = new WebClient())
-            {
-                try
-                {
-                    StringBuilder request = new StringBuilder();
-                    request.Append(System.Configuration.ConfigurationManager.ConnectionStrings["channelId"].ConnectionString);
-                    request.Append(idChannel);
-                    request.Append(Constants.JsonEndPoint);
-                    string jsonResponse = response.DownloadString(request.ToString());
-                    JsonDataResponse jsonObject = JsonConvert.DeserializeObject<JsonDataResponse>(jsonResponse);
-
-                    var programsResponse = JsonMapper.MapJsonDataResponseToProgramResponse(jsonObject);
-                    string json = JsonConvert.SerializeObject(programsResponse);
-                    Context.Response.ContentType = HTMLHeaders.ContentTypeJson();
-                    Context.Response.Write(json);
-
-                    #region Log method output
-                    
-                    #endregion
-
-                }
-                catch (WebException e)
-                {
-                    
-                }
-            }
+            string json = Facade.Instance.LoadChannelGuide(idChannel);
+            Context.Response.ContentType = HTMLHeaders.ContentTypeJson();
+            Context.Response.Write(json);
         }
     }
 }

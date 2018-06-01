@@ -20,13 +20,16 @@ namespace ApiGuideTV
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            LoadNowGuideTV();
+            string[] sortBy = Request.QueryString["sortBy"] != null ? Request.QueryString["sortBy"].Split(Constants.QuerySeparators) : null;
+            string channel = Request.QueryString["channel"] ?? String.Empty;
+
+            LoadNowGuideTV(sortBy, channel);
         }
 
 
-        private void LoadNowGuideTV()
+        private void LoadNowGuideTV(string[] sortBy, string channel)
         {
-            string json = Facade.Instance.LoadNowGuideTV();
+            string json = Facade.Instance.LoadNowGuideTV(sortBy, channel);
             Context.Response.ContentType = HTMLHeaders.ContentTypeJson();
             Context.Response.Write(json);
         }
