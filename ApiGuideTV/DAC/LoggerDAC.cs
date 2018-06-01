@@ -44,7 +44,8 @@ namespace ApiGuideTV.DAC
                 Uri uri = new Uri(Constants.logPath);
                 byte[] response = client.UploadValues(uri, HTMLHeaders.MethodPost(), values);
                 var responseString = Encoding.UTF8.GetString(response);
-            }    
+            } 
+            
         }
     }
 }

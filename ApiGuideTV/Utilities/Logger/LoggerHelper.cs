@@ -14,10 +14,11 @@ namespace ApiGuideTV.Utilities.Logger
 {
     public class LoggerHelper : LoggerBase
     {
-        private static LoggerHelper logger;
+        private static LoggerHelper instance;
 
+        private LoggerHelper() { }
 
-        static LoggerHelper()
+        static LoggerHelper Instance
         {
             get
             {

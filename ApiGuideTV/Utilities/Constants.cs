@@ -37,5 +37,7 @@ namespace ApiGuideTV.Utilities
         /// Json endpoint
         /// </summary>
         public const string JsonEndPoint = ".json";
+
+        public static readonly char[] QuerySeparators = { ',' };
     }
 }
