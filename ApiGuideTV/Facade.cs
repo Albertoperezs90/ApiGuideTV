@@ -45,5 +45,11 @@ namespace ApiGuideTV
             ProgramsResponse programs = ProgramBC.Instance.LoadChannelGuide(idChannel);
             return ReflectionHelper.GetJsonFromObject(programs);
         }
+
+        public string GenerateToken()
+        {
+            string token = TokenSecureCreator.Instance.GenerateToken();
+            return token;
+        }
     }
 }
